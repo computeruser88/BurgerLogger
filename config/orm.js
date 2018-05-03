@@ -1,7 +1,7 @@
 var connection = require("./connection.js");
 
 var burgerDbFunctions = {
-    selectAll(): () => {
+    selectAll: () => {
         connection.query("SELECT * FROM burgers", function (err, res) {
             if (err) throw err;
             for (var i = 0; i < res.length; i++) {
@@ -9,7 +9,7 @@ var burgerDbFunctions = {
             }
         });
     },
-    insertOne(): (burgerName, devoured) => {
+    insertOne: (burgerName, devoured) => {
         connection.query("INSERT INTO burgers (burger_name, devoured) VALUES ?", 
         {
             burger_name: burgerName,
@@ -20,7 +20,7 @@ var burgerDbFunctions = {
             console.log(burgerName + " inserted...");
         });
     },
-    updateOne(): (burgerId, devoured) => {
+    updateOne: (burgerId, devoured) => {
         connection.query("", function (err, res) {
             if (err) throw err;
             console.log(burgerId + " devoured: " + devoured);
