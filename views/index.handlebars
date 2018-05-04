@@ -6,7 +6,7 @@
     <div class="col md-4" id="not-devoured-burgers">
         <p>not-devoured-burgers</p>
         <ul>
-            {{#each burgers}} {{#unless devoured}} {{this.burger_name}} {{/unless}} {{/each}}
+            {{#each burgers}} {{#unless devoured}} {{{{> cats/cat-block sleep=false}}}} {{/unless}} {{/each}}
         </ul>
     </div>
     <div class="col md-4" id="input-section">
