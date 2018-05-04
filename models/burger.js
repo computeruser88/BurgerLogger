@@ -11,8 +11,8 @@ var burger = {
             callback(res);
         })
     },
-    updateOne: function(burger_name, devoured, callback) {
-        orm.updateOne("id", "devouredValue", function(res){
+    updateOne: function(devoured, burgerId, callback) {
+        orm.updateOne(burgerId, devoured, function(res){
             callback(res);
         });
     }
