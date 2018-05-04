@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs = require("express-handlebars");
 var burger = require("../models/burger.js");
 
 var router = express.Router();
@@ -13,9 +14,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-    burger.insertOne([
-        "burger_ name", "devoured"
-    ], [ req.body.burger_name, req.body.devoured],
+    burger.insertOne([[req.body.burger_name, req.body.devoured],
     function() {
         res.redirect("/");
     });
