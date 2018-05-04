@@ -1,6 +1,6 @@
-var connection = require("./connection.js");
+var connection = require("./connection");
 
-var burgerDbFunctions = {
+var orm = {
     selectAll: () => {
         connection.query("SELECT * FROM burgers", function (err, res) {
             if (err) throw err;
@@ -20,11 +20,11 @@ var burgerDbFunctions = {
         });
     },
     updateOne: (burgerId, devoured) => {
-        connection.query("", function (err, res) {
+        connection.query("UPDATE burgers SET devoured=? WHERE id=?", [devoured, burgerId], function (err, res) {
             if (err) throw err;
             console.log(burgerId + " devoured: " + devoured);
         });
     }
 };
 
-module.exports = burgerDbFunctions;
+module.exports = orm;
