@@ -5,12 +5,8 @@
 <div class="row">
     <div class="col md-4" id="not-devoured-burgers">
         <p>not-devoured-burgers</p>
-        <ul>{{#each burgers}} {{#if !burgers.devoured}}
-            <li>
-                <p>ID: {{this.id}}</p>
-                <p>Task: {{this.burger_name}}</p>
-            </li>
-            {{/if}} {{/each}}
+        <ul>
+            {{#each burgers}} {{#unless devoured}} {{this.burger_name}} {{/unless}} {{/each}}
         </ul>
     </div>
     <div class="col md-4" id="input-section">
@@ -19,12 +15,7 @@
     <div class="col md-4" id="devoured-burgers">
         <p>devoured-burgers</p>
         <ul>
-            {{#each burgers}}{{#if burgers.devoured}}
-            <li>
-                <p>ID: {{this.id}}</p>
-                <p>Task: {{this.burger_name}}</p>
-            </li>
-            {{/if}} {{/each}}
+            {{#each burgers}} {{#if devoured}} {{this.burger_name}} {{/if}} {{/each}}
         </ul>
     </div>
 </div>

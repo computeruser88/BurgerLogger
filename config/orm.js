@@ -4,9 +4,8 @@ var burgerDbFunctions = {
     selectAll: () => {
         connection.query("SELECT * FROM burgers", function (err, res) {
             if (err) throw err;
-            for (var i = 0; i < res.length; i++) {
-                console.log(res[i].id + " " + res[i].burger_name + " " + res[i].devoured);
-            }
+            console.log(res);
+            return res;
         });
     },
     insertOne: (burgerName, devoured) => {

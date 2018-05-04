@@ -1,5 +1,4 @@
 var express = require("express");
-var exphbs = require("express-handlebars");
 var burger = require("../models/burger.js");
 
 var router = express.Router();
@@ -9,7 +8,7 @@ router.get("/", function(req, res) {
         var handlebarsObject = {
             burgers: data
         };
-        res.render("index", handlebarsObject);
+        res.render("../views/index", handlebarsObject);
     });
 });
 
