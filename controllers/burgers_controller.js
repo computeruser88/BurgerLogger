@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/api/burgers/", function(req, res) {
+router.post("/api/burgers", function(req, res) {
     console.log(req.body.burger_name);
     var newBurger = {
         burger_name: req.body.burger_name,
