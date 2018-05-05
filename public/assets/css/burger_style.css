@@ -1,11 +1,11 @@
-#header {
-    justify-content: center;
-    max-width: 250px;
+img {
+  max-width: 200px;
 }
 li {
     padding: 5px;
     margin: 5px;
     background: #faebd7;
+    max-width: 300px;
 }
   
 .label {
