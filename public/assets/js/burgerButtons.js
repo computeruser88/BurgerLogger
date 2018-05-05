@@ -1,17 +1,15 @@
 $(function () {
     $(".change-devoured").on("click", function (event) {
         var id = $(this).data("id");
-        var newDevoured = $(this).data("newdevoured");
-
         var newDevouredState = {
-            devoured: newDevoured
+            devoured: true
         };
         $.ajax("/api/burgers/" + id, {
             type: "PUT",
             data: newDevouredState
         }).then(
             function () {
-                console.log("changed devoured to", newDevoured);
+                console.log("changed devoured to true");
                 location.reload();
             }
         );
@@ -19,11 +17,10 @@ $(function () {
 
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
-
         var newBurger = {
             burger_name: $("#burg").val().trim(),
             devoured: false
-        }
+        };
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger

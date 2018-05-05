@@ -1,28 +1,28 @@
 var connection = require("../config/connection");
 
 var orm = {
-    selectAll: (callback) => {
+    selectAll: function (callback) {
         connection.query("SELECT * FROM burgers", function (err, res) {
             if (err) throw err;
             console.log(res);
             callback(res);
         });
     },
-    insertOne: (newBurger, callback) => {
-        connection.query("INSERT INTO burgers (burger_name, devoured) VALUES ?",
-            newBurger,
+    insertOne: function (newBurger, callback) {
+        connection.query("INSERT INTO burgers SET ?",
+            {
+                burger_name: newBurger.burger_name,
+                devoured: newBurger.devoured
+            },
             function (err, res) {
                 if (err) throw err;
-                console.log(res.body.burger_name + " inserted...");
                 callback(res);
             });
     },
-    updateOne: (burgerId, devoured, callback) => {
-        devoured = parseInt(devoured);
-        burgerId = parseInt(burgerId);
-        connection.query("UPDATE burgers SET devoured=? WHERE id=?", [devoured, burgerId], function (err, res) {
+    updateOne: function (burgerId, callback) {
+        connection.query('UPDATE burgers SET devoured=true WHERE id=?', burgerId, function (err, res) {
             if (err) throw err;
-            console.log(burgerId + " devoured: " + devoured);
+            console.log(burgerId + " devoured: true");
             callback(res);
         });
     }
